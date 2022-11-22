@@ -62,7 +62,7 @@ Target.create "install-client" (fun _ -> run npm "install" ".")
 Target.create "run" (fun _ ->
     run dotnet "build" Paths.shared
     [ dotnet "watch run" Paths.server
-      dotnet $"fable watch {Paths.client} -o {Paths.output} --run webpack-dev-server" "." ]
+      dotnet $"fable watch {Paths.client} -o dist --run vite" "." ]
     |> runPararell)
 
 Target.create "test" (fun _ ->
