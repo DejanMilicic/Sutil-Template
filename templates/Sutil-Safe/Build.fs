@@ -69,7 +69,7 @@ Target.create "install-client" (fun _ -> run yarn "" ".")
 Target.create "run" (fun _ ->
     run dotnet "build" Paths.shared
     [ dotnet "watch run" Paths.server
-      dotnet $"fable watch {Paths.client} -o dist --run vite" "." ]
+      dotnet $"perla serve" "." ]
     |> runPararell)
 
 Target.create "test" (fun _ ->
