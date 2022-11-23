@@ -24,6 +24,13 @@ module Helpers =
       | None -> failwith "npm was not found in path."
     createProcess npmPath
 
+  let yarn =
+    let yarnPath =
+      match ProcessUtils.tryFindFileOnPath "yarn" with
+      | Some path -> path
+      | None -> failwith "yarn was not found in path."
+    createProcess yarnPath
+
   let run proc arg dir =
     proc arg dir
     |> Proc.run
@@ -57,7 +64,7 @@ Target.create "clean" (fun _ ->
     Shell.cleanDir Paths.deploy
     run dotnet $"fable clean --yes -o {Paths.output}" ".")
 
-Target.create "install-client" (fun _ -> run npm "install" ".")
+Target.create "install-client" (fun _ -> run yarn "" ".")
 
 Target.create "run" (fun _ ->
     run dotnet "build" Paths.shared
