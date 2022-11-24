@@ -1,0 +1,4 @@
+{
+    "/api/{**catch-all}": "http://localhost:8085",
+    "/socket/{**catch-all}": "http://localhost:8085"
+}
