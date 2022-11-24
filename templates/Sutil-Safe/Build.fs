@@ -67,11 +67,7 @@ open Fake.Core.TargetOperators
 
 let dependencies = [
   "clean"
-    ==> "install-client"
     ==> "run"
-
-  "install-client"
-    ==> "test"
 ]
 
 [<EntryPoint>]
