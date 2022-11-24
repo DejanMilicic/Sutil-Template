@@ -1,11 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/AngelMunoz/Perla/v0.24.1/perla.schema.json",
     "index": "./index.html",
-    "fable": {
-      "project": "./src/Client/Client.fsproj",
-      "outDir": "./dist"
-    },
     "devServer": {
+      "port": 8080,
       "liveReload": true,
       "mountDirectories": {
         "./dist": "/dist"
