@@ -1,6 +1,5 @@
 .paket/
 bin/
-node_modules/
 obj/
 paket-files/
 *.fs.js
