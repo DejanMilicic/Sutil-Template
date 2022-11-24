@@ -50,11 +50,10 @@ Target.create "clean" (fun _ ->
     Shell.cleanDir Paths.deploy
     run dotnet $"fable clean --yes -o dist" ".")
 
-Target.create "install-client" (fun _ -> run yarn "" ".")
-
 Target.create "run" (fun _ ->
     run dotnet "build" Paths.shared
     [ dotnet "watch run" Paths.server
+      dotnet $"fable watch {Paths.client} -o dist" "."
       dotnet $"perla serve" "." ]
     |> runPararell)
 
