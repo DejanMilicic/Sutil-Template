@@ -5,7 +5,7 @@
       "port": 8080,
       "liveReload": true,
       "mountDirectories": {
-        "./dist": "/dist"
+        "./test/Client/output": "/test"
       }
     }
   }

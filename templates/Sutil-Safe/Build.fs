@@ -59,7 +59,8 @@ Target.create "run" (fun _ ->
 
 Target.create "test" (fun _ ->
   [ dotnet "watch run" Paths.serverTest
-    dotnet $"fable watch {Paths.clientTest} -o {Paths.clientTestOutput} --run webpack-dev-server --env test" "." ]
+    dotnet $"fable watch {Paths.clientTest} -o {Paths.clientTestOutput}" "." 
+    dotnet $"perla serve -p 8081" "." ]
   |> runPararell)
 
 open Fake.Core.TargetOperators
