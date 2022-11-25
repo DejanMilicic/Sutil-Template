@@ -1,6 +1,0 @@
-{
-  "private": true,
-  "devDependencies": {
-    "vite": "^3.1.6"
-  }
-}
