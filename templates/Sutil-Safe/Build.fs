@@ -31,7 +31,7 @@ module Helpers =
 
 module Paths =
   let client = Path.getFullName "src/Client"
-  let output = Path.getFullName "src/Client/output"
+  let clientOutput = Path.getFullName "dist"
   let server = Path.getFullName "src/Server"
   let shared = Path.getFullName "src/Shared"
 
@@ -46,12 +46,12 @@ let execContext = Context.FakeExecutionContext.Create false "build.fsx" [ ]
 Context.setExecutionContext (Context.RuntimeContext.Fake execContext)
 
 Target.create "clean" (fun _ ->
-    run dotnet $"fable clean --yes -o dist" ".")
+    run dotnet $"fable clean --yes -o {Paths.clientOutput}" ".")
 
 Target.create "run" (fun _ ->
     run dotnet "build" Paths.shared
     [ dotnet "watch run" Paths.server
-      dotnet $"fable watch {Paths.client} -o dist" "."
+      dotnet $"fable watch {Paths.client} -o {Paths.clientOutput}" "."
       dotnet $"perla serve" "." ]
     |> runPararell)
 
