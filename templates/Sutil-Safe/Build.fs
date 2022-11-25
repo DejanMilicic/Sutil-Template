@@ -56,6 +56,7 @@ Target.create "run" (fun _ ->
     |> runPararell)
 
 Target.create "test" (fun _ ->
+  run dotnet $"fable clean --yes -o {Paths.clientTestOutput}" "."
   [ dotnet "watch run" Paths.serverTest
     dotnet $"fable watch {Paths.clientTest} -o {Paths.clientTestOutput}" "." 
     dotnet $"perla serve -p 8081" "." ]
