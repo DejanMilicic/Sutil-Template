@@ -30,7 +30,6 @@ module Helpers =
 
 
 module Paths =
-  let deploy = Path.getFullName "deploy"
   let client = Path.getFullName "src/Client"
   let output = Path.getFullName "src/Client/output"
   let server = Path.getFullName "src/Server"
@@ -47,7 +46,6 @@ let execContext = Context.FakeExecutionContext.Create false "build.fsx" [ ]
 Context.setExecutionContext (Context.RuntimeContext.Fake execContext)
 
 Target.create "clean" (fun _ ->
-    Shell.cleanDir Paths.deploy
     run dotnet $"fable clean --yes -o dist" ".")
 
 Target.create "run" (fun _ ->
